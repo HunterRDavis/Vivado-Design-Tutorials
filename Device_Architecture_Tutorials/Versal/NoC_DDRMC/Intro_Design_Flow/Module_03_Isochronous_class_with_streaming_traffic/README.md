@@ -1,6 +1,6 @@
 <table>
  <tr>
-   <td align="center"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>2021.1 Versal™ Isochronous Class with Streaming traffic</h1>
+   <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/><h1>2023.2 Versal™ Isochronous Class with Streaming traffic</h1>
    </td>
  </tr>
  <tr>
@@ -29,7 +29,7 @@ Note: This lab is provided as an example only. Figures and information depicted 
 
 # Create the Design
 ## Project Creation and AXI Memory Mapped Design
-1. Follow the steps given in Module_01 to open the 2021.1 release of Vivado®.
+1. Follow the steps given in Module_01 to open the 2023.2 release of Vivado®.
 2. Create a new project using part **xcvc1902-vsva2197-1LP-e-S**.
 3. Create an empty block design.
 4. Create one instance of the AXI NoC IP on the block design canvas.
@@ -52,9 +52,22 @@ Table: Block Automation Options
 **OK**.
 9. The Run Connection Automation link becomes active again to connect the reset and clock ports
 of the Clocking Wizard IP. Click the link, select **All Automation** and finally click **OK**.
+10. Right-click on the block design canvas and from the context menu select Add IP....
+11. The IP catalog pops up. In the Search field type constant, to filter a list of IP. From the filtered list, double-click the constant IP to instantiate the IP on the block design canvas.
+12. On the block design **delete** the following connections: 
+
+* `noc_tg` pin `axi_tg_start` to `noc_sim_trig` pin `trig_00`
+* `noc_tg_1` pin `axi_tg_start` to `noc_sim_trig` pin `trig_01`
+* `noc_sim_trig` pin `ph_trig_out` to `noc_tg` pin `trigger_in` and `noc_tg_1` pin `trigger_in`
+13. Make the following connections:
+
+* `xlconstant_0` pin `dout` to `noc_tg` pin `axi_tg_start` and `noc_tg_1` pin `axi_tg_start`
+* `noc_tg` pin `trigger_in` to `noc_sim_trig` pin `trig_00`
+* `noc_tg_1` pin `trigger_in` to `noc_sim_trig` pin `trig_01`
+
 10. Click the **Regenerate Layout** button at the top of the canvas.
 The canvas should look as follows:
-![BD after regen layout](images/axi_noc_bd_regen_layout.PNG)
+![BD after regen layout](images/Module_3_regenerated_Layout.PNG)
 
 # Configuring NoC Connectivity and QoS
 1. Double click on the **axi_noc_0** instance. This displays the configuration screen. Change the
@@ -278,16 +291,17 @@ simulation netlist and start up the Vivado® simulator. With the traffic paramet
 the simulation will complete after approximately 14 μs.
 
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+MIT License
 
-    http://www.apache.org/licenses/LICENSE-2.0
+Copyright (c) 2020-2023 Advanced Micro Devices, Inc.
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-<p align="center"><sup>Copyright© 2020-2021 Xilinx</sup><br><sup>XD028</sup><br></p>
+The above copyright notice and this permission notice (including the next paragraph) shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+<p class="sphinxhide" align="center"><sub>Copyright © 2020–2023 Advanced Micro Devices, Inc</sub></p>
+<p class="sphinxhide" align="center"><sub>XD028</sub></p>
+<p class="sphinxhide" align="center"><sup><a href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a></sup></p>
