@@ -64,26 +64,26 @@ address. Interleaving is controlled by the NoC.
 1. Add an instance of the Versal™ AXI NoC IP by right-clicking anywhere on the block design
 canvas and selecting **Add IP** from the context menu.
 2. Click on the Run Block Automation where you need to configure the NoC as shown. Then Click **OK**.
-![Block automation NoC](images/Block_automation_NoC.PNG)
+![image](https://github.com/HunterRDavis/Vivado-Design-Tutorials/blob/2023.1/Device_Architecture_Tutorials/Versal/NoC_DDRMC/Intro_Design_Flow/Module_05_Synthesis_and_Implementing_Design/images/Block_automation_NoC.png?raw=true)
 3. Double Click on the Axi NoC where the Gui will pop up. Click on the Gneral tab and change the DDR Address Region 1 to DDR CH1 and hit OK.
 4. Your Block Design should be looking similar to this:
-![Block Design NoC](images/Block_Design_NoC.PNG)
+![image](https://github.com/HunterRDavis/Vivado-Design-Tutorials/blob/2023.1/Device_Architecture_Tutorials/Versal/NoC_DDRMC/Intro_Design_Flow/Module_05_Synthesis_and_Implementing_Design/images/Block_Design_NoC.png?raw=true)
 5. Click on Address Editor and hit **Assign all**, then validate design.
 6. Once Validation is complete go to the source tab and right click on your design and Ceate HDL Wrapper.
 7. After the wrapper had been generated hit **Run Implementation**. The Launch Runs menus should appear and hit **OK**.
 8. Click **OK** when implementation is complete to open the Implemented Design.
-![Implementation Design](images/Implementation_Design.PNG)
+![image](https://github.com/HunterRDavis/Vivado-Design-Tutorials/blob/2023.1/Device_Architecture_Tutorials/Versal/NoC_DDRMC/Intro_Design_Flow/Module_05_Synthesis_and_Implementing_Design/images/Implmentation_Design.png?raw=true)
 
 # Generate Device Image and Open Hardware Manager
 
 1. Click on **Generate Device Image**.
-![Generate Device Image](images/Generate_Device_Image.PNG)
+![image](https://github.com/HunterRDavis/Vivado-Design-Tutorials/blob/2023.1/Device_Architecture_Tutorials/Versal/NoC_DDRMC/Intro_Design_Flow/Module_05_Synthesis_and_Implementing_Design/images/Generate_Device_Image.png?raw=true)
 Click **OK**.
 2. After the PDI file is generated open the Hardware Manager and target the device.
-![Target Device HW Manager](images/Target_Device_HW_Mngr.PNG)
+![image](https://github.com/HunterRDavis/Vivado-Design-Tutorials/blob/2023.1/Device_Architecture_Tutorials/Versal/NoC_DDRMC/Intro_Design_Flow/Module_05_Synthesis_and_Implementing_Design/images/Target_Device_HW_Mngr.png?raw=true)
 3. Program the VCK190 with PDI file.
 4. Once programmed Hardware Manager should show something similar to this:
-![Programmed Device](images/Programmed_Device.PNG)
+![image](https://github.com/HunterRDavis/Vivado-Design-Tutorials/blob/2023.1/Device_Architecture_Tutorials/Versal/NoC_DDRMC/Intro_Design_Flow/Module_05_Synthesis_and_Implementing_Design/images/Programed_Device.png?raw=true)
 
 
 
