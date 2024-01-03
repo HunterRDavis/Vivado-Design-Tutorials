@@ -1,6 +1,6 @@
 <table>
  <tr>
-   <td align="center"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>2021.1 Versal™ Using_Integrated_Memory_Controller_with_NoC</h1>
+   <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/><h1>2023.2 Versal™ Using_Integrated_Memory_Controller_with_NoC</h1>
    </td>
  </tr>
  <tr>
@@ -79,20 +79,31 @@ looks as follows:
     
     Note: The AXI clock and reset nets are not connected.
 
-9. Click the **Run Connection Automation** link in the green banner.
-10. Click through the clock pins on the left side of the popup and note that the Clock Source is
+9. Right-click on the block design canvas and from the context menu select Add IP....
+10. The IP catalog pops up. In the Search field type Constant, to filter a list of IP. From the filtered list, double-click the Constant to instantiate the IP on the block design canvas.
+11. Add a second Constant IP to block Diagram.
+12. Delete Signals:
+* `/ph_trig_out` for `/noc_sim_trig`
+* `/axi_tg_start` for `/noc_tg` and `/noc_tg_1`
+13. Connect Signals:
+* `/dout` for `/xlconstant_0` to `/axi_tg_start` for `/noc_tg`.
+* `/dout` for `/xlconstant_1` to `/axi_tg_start` for `/noc_tg_1`.
+* `/trig_00` for `/noc_sim_trig` to `/trigger_in` for `/noc_tg`.
+* `/trig_01` for `/noc_sim_trig` to `/trigger_in` for `/noc_tg_1`.
+14. Click the **Run Connection Automation** link in the green banner.
+15. Click through the clock pins on the left side of the popup and note that the Clock Source is
 set to:
 * `/noc_clk_gen for /noc_clk_gen/axi_clk_in_0` select Auto option from drop down list
 and
 * `noc_tg_pmon and noc_tg_pmon_1` for `/noc_clk_gen/axi_clk_0` for the rest
 of the clocks.
-11. Click to enable **All Automation**.
-12. Click **OK**.
+16. Click to enable **All Automation**.
+17. Click **OK**.
 Now all of the clock and reset nets are connected. Additionally, the `CH0_DDR4_0` interface of the
 `axi_noc_0`, `CH0_DDR4_0` and `CH1_DDR4_1` interfaces of the `axi_noc_1` are
 connected to external interface ports. These ports will provide the connections to the DDR
 I/O.
-13. The Run Connection Automation link becomes active again as there are clocks and reset
+18. The Run Connection Automation link becomes active again as there are clocks and reset
 connectivity required for the Clocking Wizard. Click the link, select **All Automation** and click **OK**.
 
 # Configure the NoC IPs
@@ -243,16 +254,17 @@ monitor output, you can see that the non-interleaved memory achieved an aggregat
 MB/sec (10,496 + 7,036) while the interleaved memory achieved 7865 MB/sec.
 
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+MIT License
 
-    http://www.apache.org/licenses/LICENSE-2.0
+Copyright (c) 2020-2023 Advanced Micro Devices, Inc.
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-<p align="center"><sup>Copyright© 2020-2021 Xilinx</sup><br><sup>XD028</sup><br></p>
+The above copyright notice and this permission notice (including the next paragraph) shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+<p class="sphinxhide" align="center"><sub>Copyright © 2020–2023 Advanced Micro Devices, Inc</sub></p>
+<p class="sphinxhide" align="center"><sub>XD028</sub></p>
+<p class="sphinxhide" align="center"><sup><a href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a></sup></p>
