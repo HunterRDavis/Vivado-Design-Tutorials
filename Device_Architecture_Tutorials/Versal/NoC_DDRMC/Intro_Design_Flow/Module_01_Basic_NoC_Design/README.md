@@ -1,6 +1,6 @@
 <table>
  <tr>
-   <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/><h1>2023.2 Versal™ Basic NoC Design</h1>
+   <td align="center"><img src="https://d3cy9zhslanhfa.cloudfront.net/media/6D972F55-8581-42E9-B19004B4B9C6882E/3DD2D00D-F761-4236-83D03E37BE7F68B2/webimage-82094271-A5DD-425A-A6F4B96AEEECFDC5.jpg" width="30%"/><h1>2023.2 Versal™ Basic NoC Design</h1>
    </td>
  </tr>
  <tr>
@@ -267,17 +267,16 @@ You can use the Zoom control to show transaction details, as shown in the follow
 Hovering the mouse over an individual transaction will display a pop-up showing transaction
 details. Clicking on a transaction component (for example, Read Address) will highlight the related transaction components.
 
+
 MIT License
 
-Copyright (c) 2020-2023 Advanced Micro Devices, Inc.
+Copyright (c) 2023 Advanced Micro Devices, Inc.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice (including the next paragraph) shall be included in all copies or substantial portions of the Software.
+
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-
-<p class="sphinxhide" align="center"><sub>Copyright © 2020–2023 Advanced Micro Devices, Inc</sub></p>
-<p class="sphinxhide" align="center"><sub>XD028</sub></p>
-<p class="sphinxhide" align="center"><sup><a href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a></sup></p>
+<p align="center"><sup>Copyright (C) 2023, Advanced Micro Devices, Inc. All rights reserved.
+SPDX-License-Identifier: MIT</sup><br><sup>XD028</sup><br></p>
