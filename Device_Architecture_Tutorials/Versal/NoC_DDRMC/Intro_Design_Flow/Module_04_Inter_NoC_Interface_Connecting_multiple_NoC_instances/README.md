@@ -1,6 +1,6 @@
 <table>
  <tr>
-   <td align="center"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>2021.1 Versal™ Inter-NoC Interface-Connecting Multiple NoC Instances</h1>
+   <td align="center"><img src="https://d3cy9zhslanhfa.cloudfront.net/media/6D972F55-8581-42E9-B19004B4B9C6882E/3DD2D00D-F761-4236-83D03E37BE7F68B2/webimage-82094271-A5DD-425A-A6F4B96AEEECFDC5.jpg" width="30%"/><h1>2023.2 Versal™ Inter-NoC Interface-Connecting Multiple NoC Instances</h1>
    </td>
  </tr>
  <tr>
@@ -24,7 +24,7 @@ Note: This lab is provided as an example only. Figures and information depicted 
 current version.
 
 # Create the Design
-Follow the steps given in Module_01 to open the 2020.2 release of Vivado®, create a new project with
+Follow the steps given in Module_01 to open the 2023.2 release of Vivado®, create a new project with
 the **xcvc1902-vsva2197-1LP-e-S** part, and create an empty block design.
 Follow the steps below to construct the IP integrator design:
 1. Copy the file `lesson04.csv` to the working directory. This file defines the simulated data
@@ -63,7 +63,7 @@ set_property -dict [list CONFIG.CONNECTIONS {MC_1 { read_bw {1720} write_bw {172
 * `axi_noc_2 M01_INI` to `axi_noc_1 S01_INI`
 
 After regenerating the layout, the canvas should look as follows.
-![after INI connections](images/layout_after_INI_connection.PNG)
+![image](https://github.com/Xilinx/Vivado-Design-Tutorials/blob/2023.1/Device_Architecture_Tutorials/Versal/NoC_DDRMC/Intro_Design_Flow/Module_04_Inter_NoC_Interface_Connecting_multiple_NoC_instances/images/layout_after_INI_connection.PNG?raw=true)
 
 4. Click **Run Block Automation** (on the green banner at the top of the canvas).
 
@@ -82,29 +82,46 @@ After regenerating the layout, the canvas should look as follows.
       
       c. enable AXI Performance Monitor for `PL-2-NOC AXI-MM` pins under Simulation. 
 
+6. Click **All Automation** on Run Block Automation.
+7. CLick on **noc_clk_gen** and change **Number of SYS Clocks** to 2 then press **OK**.
+8. Right-click on the block design canvas and from the context menu select Add IP....
+9. The IP catalog pops up. In the Search field type constant, to filter a list of IP. From the filtered list, double-click the constant IP to instantiate the IP on the block design canvas.
+10. On the block design **delete** the following connections: 
 
-6. Click **All Automation** on Run Block Automation. Followed by **Run Connection Automation**.
-7. Click **OK**. The Run Connection Automation link becomes active. Connect the clock and
+* `noc_tg` pin `axi_tg_start` to `noc_sim_trig` pin `trig_00`
+* `noc_tg_1` pin `axi_tg_start` to `noc_sim_trig` pin `trig_01`
+* `noc_sim_trig` pin `ph_trig_out` to `noc_tg` pin `trigger_in` and `noc_tg_1` pin `trigger_in`
+* `sys_clk0_1` connected to `axi_noc_3` and `sys_clk0_0` connected to `axi_noc_1`
+11. Make the following connections:
+
+* `xlconstant_0` pin `dout` to `noc_tg` pin `axi_tg_start` 
+* `xlconstant_1` pin `dout` to `noc_tg_1` pin `axi_tg_start`
+* `noc_tg` pin `trigger_in` to `noc_sim_trig` pin `trig_00`
+* `noc_tg_1` pin `trigger_in` to `noc_sim_trig` pin `trig_01`
+* `noc_clk_gen` pin `sys_clk0` to `axi_noc_1` pin `sys_clk0`
+* `noc_clk_gen` pin `sys_clk1` to `axi_noc_3` pin `sys_clk0`
+12. Click **Run Connection Automation**.
+13. Click **OK**. The Run Connection Automation link becomes active. Connect the clock and
 reset pins of the Clocking Wizard. Click the link, select **All Automation** and click **OK**.
-8. Configure the `noc_tg` to use the user defined traffic pattern defined by the `lesson04.csv`
+14. Configure the `noc_tg` to use the user defined traffic pattern defined by the `lesson04.csv`
 file previously copied to the working directory. This can be done by double-clicking the
 **noc_tg** instance to bring up the configuration dialog box and then under the Non-synthesizable TG Options tab, setting the parameter AXI Test/Pattern Types to **user defined**.
 pattern by clicking the pull-down menu.
-9. Use the file browser to select the **Path to User Defined Pattern File (CSV)** option to set the
+15. Use the file browser to select the **Path to User Defined Pattern File (CSV)** option to set the
 path to the CSV file.
-10. Click **OK** to dismiss the configuration dialog box. 
+16. Click **OK** to dismiss the configuration dialog box. 
 
-11. Click **OK** to dismiss the dialog box.
+17. Click **OK** to dismiss the dialog box.
 
-12. Regenerate the layout. The canvas should now look as follows.
-![layout after config NoC TG](images/layout_after_noc_tg_config.PNG)
+18. Regenerate the layout. The canvas should now look as follows.
+![image](https://github.com/Xilinx/Vivado-Design-Tutorials/blob/2023.1/Device_Architecture_Tutorials/Versal/NoC_DDRMC/Intro_Design_Flow/Module_04_Inter_NoC_Interface_Connecting_multiple_NoC_instances/images/layout_after_noc_tg_config.PNG?raw=true)
 
-13. Double click on **axi_noc_3** to bring up the configuration screen.
-14. On the General tab, set DDR Address Region 0, to **DDR CH1**.
-15. Click **OK** to dismiss the dialog box.
-16. Open the Address Editor and click **Assign All**. Each traffic
+19. Double click on **axi_noc_3** to bring up the configuration screen.
+20. On the General tab, set DDR Address Region 0, to **DDR CH1**.
+21. Click **OK** to dismiss the dialog box.
+22. Open the Address Editor and click **Assign All**. Each traffic
 generator sees the same memory at the same address, as shown in the following figure.
-![Address Editor for TG](images/address_editor.PNG)
+![image](https://github.com/Xilinx/Vivado-Design-Tutorials/blob/2023.1/Device_Architecture_Tutorials/Versal/NoC_DDRMC/Intro_Design_Flow/Module_04_Inter_NoC_Interface_Connecting_multiple_NoC_instances/images/address_editor.PNG?raw=true)
 The TCL commands to set the addresses are:
 ```  tcl
 set_property offset 0x0000000000000000 [get_bd_addr_segs {noc_tg_1/Data/
@@ -112,12 +129,12 @@ SEG_axi_noc_1_C1_DDR_LOW0}]
 set_property offset 0x0000050000000000 [get_bd_addr_segs {noc_tg_1/Data/
 SEG_axi_noc_3_C0_DDR_CH1}]
 ```
-17. On the Diagram canvas, select the two AXI traffic generator output nets, M_AXI, and right
+23. On the Diagram canvas, select the two AXI traffic generator output nets, M_AXI, and right
 click to display the context menu.
-18. Select **Mark Simulation**. This will mark the two AXI nets to appear as transactions in the
+24. Select **Mark Simulation**. This will mark the two AXI nets to appear as transactions in the
 simulation waveform viewer.
-19. Click **Run Validate Design** (**F6**) to validate.
-20. Run generate_target all command
+25. Click **Run Validate Design** (**F6**) to validate.
+26. Run generate_target all command
 
 ``` tcl
 generate_target all [get_files  ${myPath}/module_04/module_04.srcs/sources_1/bd/design_1/design_1.bd]
@@ -130,20 +147,19 @@ Click **SIMULATION** → **Run Simulation** → **Run Behavioral Simulation** fr
 pane. This will generate the simulation netlist and start up the Vivado simulator. With the traffic
 parameters given above, the simulation will complete after approximately 46 μs. The resulting
 waveform window showing the traffic generator AXI interfaces should appear as follows:
-![Simulation results waveform](images/sim_results.PNG)
+![image](https://github.com/Xilinx/Vivado-Design-Tutorials/blob/2023.1/Device_Architecture_Tutorials/Versal/NoC_DDRMC/Intro_Design_Flow/Module_04_Inter_NoC_Interface_Connecting_multiple_NoC_instances/images/sim_results.PNG?raw=true)
 
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+MIT License
 
-    http://www.apache.org/licenses/LICENSE-2.0
+Copyright (c) 2023 Advanced Micro Devices, Inc.
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-<p align="center"><sup>Copyright© 2020-2021 Xilinx</sup><br><sup>XD028</sup><br></p>
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+<p align="center"><sup>Copyright (C) 2023, Advanced Micro Devices, Inc. All rights reserved.
+SPDX-License-Identifier: MIT</sup><br><sup>XD028</sup><br></p>
 
