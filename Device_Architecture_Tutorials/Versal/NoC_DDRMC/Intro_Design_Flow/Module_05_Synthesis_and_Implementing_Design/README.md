@@ -19,11 +19,11 @@ The basic flow of the tutorial is as follows:
 3. Open a new block design.
 4. Add an AXI_NoC IP to the block design.
 5. Enable one Memory Controller with four ports, and specify its Address Regions.
-6. Us board file to connect the NoC to DDR4 memory on the VCK190.
+6. Use board file to connect the NoC to DDR4 memory on the VCK190.
 7. Validate the design.
 8. Synthesize the design.
 9. Implement the design.
-10. Target VCK190 on Hardware Manager and flash device.
+10. Target VCK190 on Hardware Manager and program device.
 
 
 # Description of the Design
@@ -65,7 +65,7 @@ address. Interleaving is controlled by the NoC.
 canvas and selecting **Add IP** from the context menu.
 2. Click on the Run Block Automation where you need to configure the NoC as shown. Then Click **OK**.
 ![image](https://github.com/HunterRDavis/Vivado-Design-Tutorials/blob/2023.1/Device_Architecture_Tutorials/Versal/NoC_DDRMC/Intro_Design_Flow/Module_05_Synthesis_and_Implementing_Design/images/Block_automation_NoC.png?raw=true)
-3. Double Click on the Axi NoC where the Gui will pop up. Click on the Gneral tab and change the DDR Address Region 1 to DDR CH1 and hit OK.
+3. Double Click on the Axi NoC where the Gui will pop up. Click on the General tab and change the DDR Address Region 1 to DDR CH1 and hit OK.
 4. Your Block Design should be looking similar to this:
 ![image](https://github.com/HunterRDavis/Vivado-Design-Tutorials/blob/2023.1/Device_Architecture_Tutorials/Versal/NoC_DDRMC/Intro_Design_Flow/Module_05_Synthesis_and_Implementing_Design/images/Block_Design_NoC.png?raw=true)
 5. Click on Address Editor and hit **Assign all**, then validate design.
@@ -73,20 +73,21 @@ canvas and selecting **Add IP** from the context menu.
 7. After the wrapper had been generated hit **Run Implementation**. The Launch Runs menus should appear and hit **OK**.
 8. Click **OK** when implementation is complete to open the Implemented Design.
 ![image](https://github.com/HunterRDavis/Vivado-Design-Tutorials/blob/2023.1/Device_Architecture_Tutorials/Versal/NoC_DDRMC/Intro_Design_Flow/Module_05_Synthesis_and_Implementing_Design/images/Implmentation_Design.png?raw=true)
-
+The implementation process involves placing the synthesized logic onto the physical FPGA chip itself. The image above gives you a visual representation of how the elements are placed and connected. The green traces and highlights show the logic elements that are being used and how they're are connected to one another. 
 # Generate Device Image and Open Hardware Manager
 
-1. Click on **Generate Device Image**.
-![image](https://github.com/HunterRDavis/Vivado-Design-Tutorials/blob/2023.1/Device_Architecture_Tutorials/Versal/NoC_DDRMC/Intro_Design_Flow/Module_05_Synthesis_and_Implementing_Design/images/Generate_Device_Image.png?raw=true)
-Click **OK**.
-2. After the PDI file is generated open the Hardware Manager and target the device.
+1. Click on **Generate Device Image**. Once the Launch Runs Menu pops up click **OK**.
+2. After the PDI file is generated open the Hardware manager. You will be directed out of Vivado and into a new GUI that will ask if you would like to connect a device.
 ![image](https://github.com/HunterRDavis/Vivado-Design-Tutorials/blob/2023.1/Device_Architecture_Tutorials/Versal/NoC_DDRMC/Intro_Design_Flow/Module_05_Synthesis_and_Implementing_Design/images/Target_Device_HW_Mngr.png?raw=true)
+You can see from the image above, the red highlighted area shows the device you're connected to and the status of whether the device is programmed or not.
 3. Program the VCK190 with PDI file.
 4. Once programmed Hardware Manager should show something similar to this:
 ![image](https://github.com/HunterRDavis/Vivado-Design-Tutorials/blob/2023.1/Device_Architecture_Tutorials/Versal/NoC_DDRMC/Intro_Design_Flow/Module_05_Synthesis_and_Implementing_Design/images/Programed_Device.png?raw=true)
 
+# Design Conclusion
 
-
+This tutorial provided a comprehensive walkthrough of FPGA system design using Vivado 2023.2, emphasizing the integration of an AXI-NoC IP for DDR4 memory access on the VCK190 board. From project initialization to programming the board, users learned the sequential steps of creating a block design, configuring IPs, validating the design, and implementing it onto the FPGA. This tutorial highlighted the significance of understanding hardware design workflows, IP integration, validation processes, and FPGA programming for engineers learning to use the NoC IP for memory contoller applications. 
+# 
 MIT License
 
 Copyright (c) 2020-2023 Advanced Micro Devices, Inc.
