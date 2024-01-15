@@ -20,7 +20,7 @@ This tutorial introduce different design aspects for the NoC DDRMC by providing 
 
 To build and run the NoC DDRMC tutorials, download and install the following:
 
-* [Vivado 2021.2](www.xilinx.com)
+* [Vivado 2023.2]([www.xilinx.com](https://www.xilinx.com/support/download.html))
 
 
 ## Module 01 -Basic NoC Design
