@@ -75,7 +75,7 @@ apply_bd_automation -rule xilinx.com:bd_rule:axi_noc -config { mc_type {DDR} noc
 
 8. Regenerate layout by selecting the **Regenerate Layout** button in the BD canvas, the canvas
 looks as follows:
-![Layout after running block automation](images/layout_after_block_automation.PNG)
+![Layout after running block automation](images/Layout_after_block_automation.PNG)
     
     Note: The AXI clock and reset nets are not connected.
 
