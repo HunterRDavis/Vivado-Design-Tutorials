@@ -73,14 +73,16 @@ canvas and selecting **Add IP** from the context menu.
 7. After the wrapper had been generated hit **Run Implementation**. The Launch Runs menus should appear and hit **OK**.
 8. Click **OK** when implementation is complete to open the Implemented Design.
 ![image](https://github.com/HunterRDavis/Vivado-Design-Tutorials/blob/2023.1/Device_Architecture_Tutorials/Versal/NoC_DDRMC/Intro_Design_Flow/Module_05_Synthesis_and_Implementing_Design/images/Implmentation_Design.png?raw=true)
-The implementation process involves placing the synthesized logic onto the physical FPGA chip itself. The image above gives you a visual representation of how the elements are placed and connected. The green traces and highlights show the logic elements that are being used and how they're are connected to one another. 
+Now since you finished your design you can open Device Viewer and see the CIPS block directly connected to the NoC. This simple setup avoids fabric resources by utilizing the hardened IP components.
 # Generate Device Image and Open Hardware Manager
 
+In this tutorial section, we'll generate a Device Image (PDI) and use the Hardware Manager for device programming. Transitioning from Vivado to the Hardware Manager GUI provides precise device targeting and programming capabilities. The Hardware Manager also offers essential insights, including device status, calibration, and properties, streamlining the programming process.
 1. Click on **Generate Device Image**. Once the Launch Runs Menu pops up click **OK**.
-2. After the PDI file is generated open the Hardware manager. You will be directed out of Vivado and into a new GUI that will ask if you would like to connect a device.
+2. After the PDI file is generated click on **Open Hardware manager**. You will be directed out of Vivado and into a new GUI.
+3. In the Hardware Manager GUI go to the green banner at the top and click on **Open target** and hit Auto Connect.
 ![image](https://github.com/HunterRDavis/Vivado-Design-Tutorials/blob/2023.1/Device_Architecture_Tutorials/Versal/NoC_DDRMC/Intro_Design_Flow/Module_05_Synthesis_and_Implementing_Design/images/Target_Device_HW_Mngr.png?raw=true)
 You can see from the image above, the red highlighted area shows the device you're connected to and the status of whether the device is programmed or not.
-3. Program the VCK190 with PDI file.
+4. Once you're connected to your device click on **Program device**. The Program Device menu will pop up where you can choose the PDI file that you generated and then click **Program**.
 4. Once programmed Hardware Manager should show something similar to this:
 ![image](https://github.com/HunterRDavis/Vivado-Design-Tutorials/blob/2023.1/Device_Architecture_Tutorials/Versal/NoC_DDRMC/Intro_Design_Flow/Module_05_Synthesis_and_Implementing_Design/images/Programed_Device.png?raw=true)
 
