@@ -65,7 +65,7 @@ of the Clocking Wizard IP. Click the link, select **All Automation** and finally
 * `noc_tg` pin `trigger_in` to `noc_sim_trig` pin `trig_00`
 * `noc_tg_1` pin `trigger_in` to `noc_sim_trig` pin `trig_01`
 
-10. Click the **Regenerate Layout** button at the top of the canvas.
+14. Click the **Regenerate Layout** button at the top of the canvas.
 The canvas should look as follows:
 ![BD after regen layout](images/Module_3_regenerated_Layout.PNG)
 
